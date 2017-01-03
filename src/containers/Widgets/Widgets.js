@@ -5,7 +5,7 @@ import * as widgetActions from 'redux/modules/widgets';
 import {isLoaded, load as loadWidgets} from 'redux/modules/widgets';
 import {initializeWithKey} from 'redux-form';
 import { WidgetForm } from 'components';
-import { asyncConnect } from 'redux-async-connect';
+import { asyncConnect } from 'penny-redux-async-connect';
 
 @asyncConnect([{
   deferred: true,
@@ -103,4 +103,3 @@ export default class Widgets extends Component {
     );
   }
 }
-

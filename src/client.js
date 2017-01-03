@@ -10,8 +10,8 @@ import io from 'socket.io-client';
 import {Provider} from 'react-redux';
 import { Router, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
-import { ReduxAsyncConnect } from 'redux-async-connect';
-import useScroll from 'scroll-behavior/lib/useStandardScroll';
+import { ReduxAsyncConnect } from 'penny-redux-async-connect';
+import { useScroll } from 'react-router-scroll/lib/useScroll';
 
 import getRoutes from './routes';
 
