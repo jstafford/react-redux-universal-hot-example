@@ -1,4 +1,5 @@
-{ "extends": "eslint-config-airbnb",
+{
+  "extends": "eslint-config-airbnb",
   "env": {
     "browser": true,
     "node": true,
@@ -18,8 +19,14 @@
     "no-console": 0,
     "no-alert": 0
   },
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "sourceType": "module",
+    "allowImportExportEverywhere": false
+  },
   "plugins": [
-    "react", "import"
+    "import",
+    "react"
   ],
   "settings": {
     "import/parser": "babel-eslint",

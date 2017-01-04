@@ -4,25 +4,25 @@
 import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import createStore from './redux/create';
-import ApiClient from './helpers/ApiClient';
 import io from 'socket.io-client';
-import {Provider} from 'react-redux';
+import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import { ReduxAsyncConnect } from 'penny-redux-async-connect';
 import { useScroll } from 'react-router-scroll/lib/useScroll';
 
+import createStore from './redux/create';
+import ApiClient from './helpers/ApiClient';
 import getRoutes from './routes';
 
 const client = new ApiClient();
-const _browserHistory = useScroll(() => browserHistory)();
+const scrollBrowserHistory = useScroll(() => browserHistory)();
 const dest = document.getElementById('content');
-const store = createStore(_browserHistory, client, window.__data);
-const history = syncHistoryWithStore(_browserHistory, store);
+const store = createStore(scrollBrowserHistory, client, window.serializedStoreData);
+const history = syncHistoryWithStore(scrollBrowserHistory, store);
 
 function initSocket() {
-  const socket = io('', {path: '/ws'});
+  const socket = io('', { path: '/ws' });
   socket.on('news', (data) => {
     console.log(data);
     socket.emit('my other event', { my: 'data from client' });
@@ -37,9 +37,11 @@ function initSocket() {
 global.socket = initSocket();
 
 const component = (
-  <Router render={(props) =>
-        <ReduxAsyncConnect {...props} helpers={{client}} filter={item => !item.deferred} />
-      } history={history}>
+  <Router
+    render={props =>
+      <ReduxAsyncConnect {...props} helpers={{ client }} filter={item => !item.deferred} />
+      } history={history}
+  >
     {getRoutes(store)}
   </Router>
 );
