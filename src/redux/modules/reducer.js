@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
 import multireducer from 'multireducer';
 import { routerReducer } from 'react-router-redux';
-import {reducer as reduxAsyncConnect} from 'penny-redux-async-connect';
+import { reducer as reduxAsyncConnect } from 'penny-redux-async-connect';
 import { pagination } from 'violet-paginator';
+import { reducer as form } from 'redux-form';
 
 import auth from './auth';
 import counter from './counter';
-import {reducer as form} from 'redux-form';
 import info from './info';
 import widgets from './widgets';
 
