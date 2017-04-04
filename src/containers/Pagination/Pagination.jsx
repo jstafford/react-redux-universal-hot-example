@@ -87,7 +87,12 @@ export function Pagination({ fetch }) {
 
       <p>
         This is an example of a datatable in redux with sorting and pagination capability
-        provided by <a href="https://www.npmjs.com/package/violet-paginator" target="_blank">violet-paginator</a>.
+        provided by
+        <a
+          href="https://www.npmjs.com/package/violet-paginator"
+          target="_blank"
+          rel="noopener noreferrer"
+        >violet-paginator</a>.
       </p>
       <VioletPaginator {...config} />
       <VioletDataTable
